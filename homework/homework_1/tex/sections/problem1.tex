@@ -1,0 +1,81 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\problem{2.7}
+
+Suppose that we are testing \(H_0 : \mu_1 = \mu_2\) versus \(H_1 : \mu_1 > \mu_2\) where the two sample sizes are \(n_1 = n_2 = 10\).
+Both sample variances are unknown but assumed equal. Find bounds on the $P$-value for the following observed values of the test statistic.
+
+\begin{enumerate}[label = (\alph*)]
+    \item \(t_0 = 2.31\)
+    \item \(t_0 = 3.60\)
+    \item \(t_0 = 1.95\)
+    \item \(t_0 = 2.19\)
+\end{enumerate}
+
+\givens{}
+\(n_1 = n_2 = 10\) \\
+Sample variances are unknown but equal.
+
+\assumptions{}
+For all values of the test statistic, we use a two-sample t-test because the \textit{population variances} are unknown.
+This is a right-tailed t-test due to the alternative hypothesis, \(H_1 : \mu_1 > \mu_2\).
+We use a pooled t-test because the sample variances are assumed equal. 
+The t-test has \(n_1+n_2-2 = 18\) degrees of freedom.
+
+\solution{}
+
+Claim: Population mean 1, \(\mu_1\), is equal to population mean 2, \(\mu_2\).
+\[\mu_1 = \mu_2\]
+
+Hypotheses:
+\[H_0 : \mu_1 = \mu_2\] 
+\[H_1 : \mu_1 > \mu_2\]
+   
+ Because the sample variances are assumed equal, we do not perform an F-test, and move directly to a pooled t-test for our sample.
+ The test statistic for a pooled t-test is given as
+
+ \[
+    t_0 = \frac{\bar{y_1}-\bar{y_2}}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}   \, ,
+ \]
+
+where \(S_p\) is defined as
+
+\[
+    S_p = \sqrt{
+        \frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1+n_2-2} \, ,
+    }  
+\]
+
+and \(S_1 \ \textrm{and} \ S_2\) are the sample variances.
+
+\par
+
+Given the values of the test statistic, \(t_o\), we use the tcdf() function of the Ti-84 calculator with \(n_1 + n_2 -2\) degrees of freedom to generate a $P$-value.
+The tcdf() function's inputs are a lower bound, an upper bound, and the number of degrees of freedom. In our case, the lower bound will be our test statistic, \(t_o\) and the upper bound will be some very large number, in this case, \(E99\) to approximate the infinite end of the t-distribution.
+\begin{enumerate}[label = (\alph*)]
+
+    \item \(t_0 = 2.31\) \\
+        tcdf(2.31,E99,18)\\
+        $P$-value = 0.01647
+
+    \item \(t_0 = 3.60\)\\
+        tcdf(3.60,E99,18)\\
+        $P$-value = 0.0010
+
+    \item \(t_0 = 1.95\)\\
+        tcdf(1.95,E99,18)\\
+        $P$-value = 0.0335
+
+    \item \(t_0 = 2.19\)\\
+        tcdf(2.19,E99,18)\\
+        $P$-value = 0.0210
+        
+    Given the observed test-statistics, we can bound the $P$-value on:
+    
+    \[\left({0.0010 \le P \le 0.0335}\right)\]
+\end{enumerate}
+
+
+\end{document}

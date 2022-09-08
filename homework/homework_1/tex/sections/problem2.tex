@@ -1,0 +1,118 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\problem{2.24}
+
+The time to repair an electronic instrument is a normally distributed random variable measured in hours.
+The repair times for 16 such instruments chosen at random are as follows:
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{llll}
+    \toprule
+    \multicolumn{4}{c}{\textbf{Hours}} \\ \midrule
+    159     & 280    & 101    & 212    \\ 
+    224     & 379    & 179    & 264    \\ 
+    222     & 362    & 168    & 250    \\ 
+    149     & 260    & 485    & 170    \\ \toprule
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}[label=(\alph*)]
+    \item\label{24A}
+    You wish to know if the mean repair time exceeds 225 hours.
+    Set up appropriate hypotheses for investigating this issue.
+
+    \givens{}
+    \(n = 16\)\\
+    Time is normally distributed and random.
+    
+    \solution{}
+    Claim: The mean repair time exceeds 225 hours.
+    \[\mu > 225\]
+
+    Hypotheses:
+    \[H_0 : \mu = 225\] 
+    \[H_1 : \mu > 225\]
+
+    \item
+    Test the hypotheses formulated in part~\ref{24A}.
+    What are your conclusions?
+    Use \(\alpha = 0.05\).
+
+    \givens{}
+    \(\alpha = 0.05\)
+
+    \solution{}
+    For a simple hypothesis test of one variable without a known population variance, we use a t-test.
+    Because normality is assumed in the givens, we do not need to test for it. 
+    Our test statistic, \(t\), is defined as:
+
+    \[
+        t = \frac{\bar{y}-\mu}{S/\sqrt{n}} \, ,
+    \]
+
+    where \(\bar{y}\) is the sample mean, \(\mu\) is the population mean, \(S\) is the sample variance, and \(n\) is the size of the sample.
+
+    The critical value is the value of the test statistic beyond which we reject the null hypothesis. 
+    The C.V. for a one-tailed test is given by
+
+    \[
+        C.V. = t_{\alpha,n-1}
+    \]
+
+    The C.V. can be found using the Ti-84's invT() function, which yields a $t$-value for a given area and number of degrees of freedom.
+
+    \[
+        {t_{0.95,15} = 1.7530}     
+    \]    
+    
+    Using the T-Test function on the Ti-84 with the data from the table yields the value of the test statistic, $t$.
+
+    \[{t = 0.6685}\]
+
+    Our test statistic, $t$, is smaller than our critical value, therefore we fail to reject the null hypothesis $H_0$ at $\alpha = 0.05$.
+
+    \[
+        \boxed{0.6685 < 1.7530 \rightarrow \textrm{Fail to reject} \ H_0}    
+    \]    
+
+    This indicates that we cannot prove that the mean repair time is not 225 hours at \(\alpha = 0.05\).
+
+    \item
+    Find the $P$-value for the test.
+
+    \solution{}
+    Using the T-test function on the Ti-84 with the data from the table yields the $P$-value.
+
+    \[\boxed{P\textrm{-value} = 0.2570}\]
+    
+    As before, this value is large compared to \(\alpha = 0.05\), therefore we fail to reject \(H_0\). 
+
+    \item
+    Construct a 95 percent confidence interval on mean repair time.
+
+    \solution{}
+
+    A confidence interval on a mean for a t-distribution is defined as
+
+    \[ 
+        P
+        \left({
+            \bar{y} - t_{\alpha/2,n-1} S/\sqrt{n} \le \mu \le \bar{y} + t_{\alpha/2,n-1} S/\sqrt{n}
+        }\right)  
+        = 1 - \alpha 
+    \]
+
+    Using the Ti-84's TInterval function yields the 95 \% confidence interval on mean repair time.
+
+    \[
+        \boxed{\left(188.89 \le \mu \le 294.11\right)}
+    \]
+
+    This result indicates we are 95\% confident that the true value of mean repair time falls between 188.89 hours and 294.11 hours. 
+    
+\end{enumerate}
+
+\end{document}

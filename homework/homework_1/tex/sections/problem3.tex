@@ -1,0 +1,95 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\problem{2.28}
+
+The following are the burning times (in minutes) of chemical flares of two different formulations.
+The design engineers are interested in both the mean and variance of the burning times.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{cccc}
+    \toprule
+    \multicolumn{2}{c}{\textbf{Type 1}} & \multicolumn{2}{c}{\textbf{Type 2}} \\ \midrule
+    65     & 82    & 64    & 56    \\ 
+    81     & 67    & 71    & 69    \\ 
+    57     & 59    & 83    & 74    \\ 
+    66     & 75    & 59    & 82    \\ 
+    82     & 70    & 65    & 79    \\ \toprule
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}[label = (\alph*)]
+    \item\label{28A}
+        Test the hypothesis that the two variances are equal.
+        Use \(\alpha = 0.05\)
+
+        \givens{}
+        Data in table in minutes.\\
+        \(\alpha = 0.05\)
+
+        \assumptions{}
+        The data is normally distributed.
+
+        \solution{}
+        Claim: The variances of burning times of both formulations of chemical flares are equal.
+        \[\sigma_1 = \sigma_2\]
+
+        Hypotheses:
+
+        \[H_0' : \sigma_1 = \sigma_2\]
+        \[H_1' : \sigma_1 \ne \sigma_2\]
+
+        The test statistic for comparing variances of two different samples is $F$ and is given by
+
+        \[
+            F = \frac{S_1^2}{S_2^2}    
+        \]
+
+        Using the Ti-84's 2Samp-FTest function, we obtain the value of our test statistic $F$, as well as its $P$-value.
+
+        \[F = 0.9782\]
+        \[P\textrm{-value} = 0.9744\]
+
+        This value is sufficiently large to move forward assuming that \(\sigma_1=\sigma_2\). 
+        In other words, at \(\alpha = 0.05\), we fail to reject \(H_0' : \sigma_1 = \sigma_2\).
+        We cannot prove that there is a statistically significant difference between the variances at \(\alpha = 0.05\).
+    \item 
+        Using the results from~\ref{28A}, test the hypothesis that the mean burning times are equal.
+        Use \(\alpha = 0.05\).
+        What is the $P$-value for this test?
+
+        \givens{}
+        \(\alpha = 0.05\)
+
+        \assumptions{}
+        From part \ref{28A}, we need to use a pooled t-test for comparison of means between the two samples.
+        The data is normally distributed.
+
+        \solution{}
+
+        Claim: The mean burning times are equal.
+        \[\mu_1 = \mu_2\]
+
+        Hypotheses:
+        \[H_0 : \mu_1 = \mu_2\]
+        \[H_1 : \mu_1 \ne \mu_2\]
+
+        Test Statistic:
+        \[
+            t_0 = \frac{\bar{y_1}-\bar{y_2}}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
+        \]
+
+        Using the Ti-84's 2-SampTTest function to perform a pooled two-sample t-test on the given data, we obtain the value of the test statistic and its $P$-value.
+
+        \[t_0 = 0.0480\]
+        \[P\textrm{-value} = 0.9622\]
+        \[0.9622 > 0.05 \rightarrow \textrm{Fail to reject} \ H_0\]
+
+        The $P$-value is large in comparison to \(\alpha = 0.05\), therefore we fail to reject \(H_0 : \mu_1 = \mu_2\).
+        We cannot prove that there is a statistically meaningful difference between the mean burning times at \(\alpha = 0.05\).
+        
+\end{enumerate}
+
+\end{document}
